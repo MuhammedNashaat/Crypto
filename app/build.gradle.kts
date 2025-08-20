@@ -1,3 +1,5 @@
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
@@ -5,6 +7,14 @@ plugins {
     alias(libs.plugins.kotlin.serialization)
 }
 
+val localProperties = Properties()
+val file = File(rootProject.rootDir,"local.properties")
+if(file.exists() && file.isFile)
+{
+    file.inputStream().use {
+        localProperties.load(it)
+    }
+}
 
 android {
     namespace = "com.plcoding.cryptotracker"
@@ -24,12 +34,18 @@ android {
     }
 
     buildTypes {
+        debug {
+            buildConfigField("String","BASE_URL","\"https://rest.coincap.io/v3/\"")
+            buildConfigField("String","API_KEY",localProperties.getProperty("API_KEY"))
+        }
         release {
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            buildConfigField("String","BASE_URL","\"https://rest.coincap.io/v3/\"")
+            buildConfigField("String","API_KEY",localProperties.getProperty("API_KEY"))
         }
     }
     compileOptions {
