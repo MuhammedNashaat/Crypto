@@ -1,10 +1,9 @@
 package com.plcoding.cryptotracker.crypto.presentation.models
 
 import android.annotation.SuppressLint
-import androidx.annotation.ColorInt
 import androidx.annotation.DrawableRes
 import com.plcoding.cryptotracker.crypto.domain.Coin
-import com.plcoding.cryptotracker.util.getDrawableIdForCoin
+import com.plcoding.cryptotracker.crypto.core.presentation.util.getDrawableIdForCoin
 
 data class CoinUi(
     var id: String,
