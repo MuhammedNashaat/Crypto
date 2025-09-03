@@ -9,6 +9,7 @@ import com.plcoding.cryptotracker.crypto.data.mapppers.toCoin
 import com.plcoding.cryptotracker.crypto.data.networking.dto.CoinResponseDto
 import com.plcoding.cryptotracker.crypto.domain.Coin
 import com.plcoding.cryptotracker.crypto.domain.CoinDataSource
+import com.plcoding.cryptotracker.crypto.domain.CoinHistory
 import io.ktor.client.HttpClient
 import io.ktor.client.request.get
 
@@ -21,5 +22,9 @@ class RemoteCoinDataSource(
                 urlString = constructURL("assets")
             )
         }.map { response -> response.data.map{it.toCoin()} }
+    }
+
+    override suspend fun getCoinHistory(): Result<List<CoinHistory>, NetworkError> {
+        TODO("Not yet implemented")
     }
 }
