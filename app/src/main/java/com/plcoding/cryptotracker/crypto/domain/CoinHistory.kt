@@ -1,10 +1,9 @@
 package com.plcoding.cryptotracker.crypto.domain
 
-import android.icu.util.TimeZone
+import java.time.ZonedDateTime
 
 data class CoinHistory (
-    //val circulatingSupply: Long ,
     val priceUsd: Double,
-    val time: TimeZone,
+    val time: ZonedDateTime,
     val date: String
 )
