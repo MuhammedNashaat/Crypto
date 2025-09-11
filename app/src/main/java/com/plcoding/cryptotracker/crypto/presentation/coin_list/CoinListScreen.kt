@@ -37,7 +37,7 @@ fun CoinListScreen(
         LazyColumn (
             modifier = modifier
                 .fillMaxSize(),
-            verticalArrangement = Arrangement.spacedBy(2.dp)
+            verticalArrangement = Arrangement.spacedBy(1.dp)
         ) {
             items (state.coins) { coinUi ->
                 CoinListItem(
@@ -45,7 +45,7 @@ fun CoinListScreen(
                     onClick = {
                         onAction(CoinListAction.OnCoinClick(coinUi))
                     },
-                    modifier = modifier.fillMaxWidth()
+                    modifier = Modifier.fillMaxWidth()
                 )
                 HorizontalDivider()
             }
